@@ -1,8 +1,13 @@
 #include "Game.hpp"
 
 
+<<<<<<< HEAD
 // TODO: 砲台の位置を画面左に、ターゲットの位置を画面右に移動させる。(A) HW16A058 北田大河
 // TODO: 雲の位置を左から右に動かす。見えなくなったら左端に戻す。(B)
+=======
+// TODO: 砲台の位置を画面左に、ターゲットの位置を画面右に移動させる。(A)
+// TODO: 雲の位置を左から右に動かす。見えなくなったら左端に戻す。(B) HW16A056 岸本 朋哉
+>>>>>>> 422a5cb1e8e156511980b58ffab42a783f1c48b2
 // TODO: 砲台を青い壁に沿って上下に動かす。(C)
 // TODO: 弾のスピードを速くし、弾が画面右端を通り越したら再度発射可能にする。(D)
 // TODO: スコアのサイズを大きくする。(E)
@@ -54,7 +59,12 @@ void Update()
 
     // 雲の描画
     DrawImage("cloud1.png", cloudPos);
-
+    
+    cloudPos.x += 1;
+    
+    if(cloudPos.x >= 301){
+        cloudPos.x -= 830;
+    }
     // 弾の描画
     if (bulletPos.x > -999) {
         DrawImage("bullet.png", bulletPos);
