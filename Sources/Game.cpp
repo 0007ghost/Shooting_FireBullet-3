@@ -15,8 +15,8 @@
 // TODO: 砲台を青い壁に沿って上下に動かす。(C) HW16A056 岸本 朋哉
 >>>>>>> 1dcdd43d4a4a282a91ba83604ebdf5fe0a482a3c
 // TODO: 弾のスピードを速くし、弾が画面右端を通り越したら再度発射可能にする。(D)
-// TODO: スコアのサイズを大きくする。(E)
-// TODO: スコアを100点ずつ加算するようにし、5桁の表示に変える。(F)
+// TODO: スコアのサイズを大きくする。(E) HW16A058 北田大河
+// TODO: スコアを100点ずつ加算するようにし、5桁の表示に変える。(F) HW16A058 北田大河
 // TODO: PlayBGM()関数を使って、BGMを再生する。(G)
 // TODO: PlaySE()関数を使って、弾の発射時とターゲットに当たった時にSEを再生する。(H)
 
@@ -44,6 +44,7 @@ void Update()
     // 弾の発射
     if (bulletPos.x <= -999 && Input::GetKeyDown(KeyMask::Space)) {
         bulletPos = cannonPos + Vector2(50, 10);
+        PlaySound("se_maoudamashii_system20.mp3");
     }
 
     // 弾の移動
@@ -53,7 +54,12 @@ void Update()
         // ターゲットと弾の当たり判定
         Rect bulletRect(bulletPos, Vector2(32, 20));
         if (targetRect.Overlaps(bulletRect)) {
+<<<<<<< HEAD
+            PlaySound("se_maoudamashii_explosion03.mp3");
             score += 1;         // スコアの加算
+=======
+            score += 100;         // スコアの加算
+>>>>>>> feature/F
             bulletPos.x = -999; // 弾を発射可能な状態に戻す
         }
     }
@@ -89,8 +95,8 @@ void Update()
     FillRect(targetRect, Color::red);
 
     // スコアの描画
-    SetFont("nicoca_v1.ttf", 20.0f);
-    DrawText(FormatString("%02d", score), Vector2(-319, 199), Color::black);
-    DrawText(FormatString("%02d", score), Vector2(-320, 200), Color::white);
+    SetFont("nicoca_v1.ttf", 100.0f);
+    DrawText(FormatString("%05d", score), Vector2(-319, 159), Color::black);
+    DrawText(FormatString("%05d", score), Vector2(-320, 160), Color::white);
 }
 
